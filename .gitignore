@@ -1,0 +1,12 @@
+.DS_Store
+node_modules
+uploads
+public/app/app.config.js
+public/bower_components
+apidoc
+artifacts
+coverage
+.idea
+package-lock.json
+.nyc_output
+.env
