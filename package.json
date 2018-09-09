@@ -1,5 +1,5 @@
 {
-  "name": "mean-skel",
+  "name": "acamica-cart-backend",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/LateralView/mean-skel.git"
+    "url": "https://github.com/elcasu/acamica-cart-backend.git"
   },
   "author": "LateralView",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/LateralView/mean-skel/issues"
+    "url": "https://github.com/elcasu/acamica-cart-backend/issues"
   },
-  "homepage": "https://github.com/LateralView/mean-skel.git",
+  "homepage": "https://github.com/elcasu/acamica-cart-backend.git",
   "dependencies": {
     "apidoc": "^0.17.6",
     "aws-sdk": "^2.153.0",
