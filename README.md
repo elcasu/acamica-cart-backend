@@ -80,8 +80,7 @@ La cual devolverá un listado de los productos disponibles:
         "price": 2500,
         "oldPrice": 2650,
         "pictureUrl": "https://s3.amazonaws.com/acamica-cart-images/product02.png"
-    },
-    ...
+    }
 ]
 ```
 
