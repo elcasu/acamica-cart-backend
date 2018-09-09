@@ -369,7 +369,7 @@ class UsersHandler {
 
   async removeProductFromCart(req, res) {
     const user = req.current_user
-    const updatedUser = await user.removeProductFromCart(req.params.productId)
+    const updatedUser = await user.removeProductFromCart(req.params.productId, req.query.all)
     res.send(updatedUser.cart)
   }
 }

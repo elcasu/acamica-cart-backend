@@ -7,10 +7,7 @@ class Product extends mongoose.Schema {
       name: {
         type: String,
         trim: true,
-        required: "Name is required.",
-        index: {
-          unique: true
-        }
+        required: "Name is required."
       },
 
       price: {
@@ -25,27 +22,27 @@ class Product extends mongoose.Schema {
 
       pictureUrl: {
         type: String
-      },
+      }
 
-      picture: {
-        original_file: {
-          fieldname: String,
-          originalname: String,
-          name: String,
-          encoding: String,
-          mimetype: {
-            type: String,
-            default: ''
-          },
-          path: String,
-          extension: String,
-          size: Number,
-          truncated: Boolean,
-          buffer: Buffer
-        },
-        path: String,
-        url: String
-      },
+      // picture: {
+      //   original_file: {
+      //     fieldname: String,
+      //     originalname: String,
+      //     name: String,
+      //     encoding: String,
+      //     mimetype: {
+      //       type: String,
+      //       default: ''
+      //     },
+      //     path: String,
+      //     extension: String,
+      //     size: Number,
+      //     truncated: Boolean,
+      //     buffer: Buffer
+      //   },
+      //   path: String,
+      //   url: String
+      // },
     })
 
     this.pre('save', function(next) {
@@ -76,7 +73,10 @@ class Product extends mongoose.Schema {
 
     this.statics.getProducts = async function() {
       const products = await this.find({})
-      return products || []
+      if (!products) {
+        return []
+      }
+      return products.map(p => p.asJson())
     }
 
     this.methods.asJson = function() {
@@ -85,7 +85,7 @@ class Product extends mongoose.Schema {
         name: this.name,
         price: this.price,
         oldPrice: this.oldPrice,
-        picture: this.picture
+        pictureUrl: this.pictureUrl
       }
     }
   }

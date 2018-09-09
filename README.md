@@ -1,139 +1,206 @@
-# Backend skel
+# Carrito de compras - Backend
 
-Base skeleton for Backend Apps using Node, Express and MongoDB. Developed by the [LateralView](https://lateralview.co) team.
+## Introducción
 
-The app allows user sign-up, account activation, login, logout and profile edition. The activation process uses mail confirmation with the Sendgrid library. If you don't set the Sendgrid API key, you'll see the activation link in the console.
+Implementación del backend para el desafío del carrito de compras de Acámica.
+La idea es exponer algunos endpoints que nos permitan:
 
-```sh
-...
-GET /favicon.ico 304 2.113 ms - -
-ACTIVATION LINK: http://localhost:8085/activate/E1JpEbZw
-POST /api/users/ 200 388.902 ms - 27
-...
+- Loguearse en la aplicación con email / password
+- Utilizando el usuario actualmente logueado:
+  - Obtener el listado de productos
+  - Obtener el carrito en su estado actual
+  - Agregar productos al carrito
+  - Eliminar un producto del carrito
+  - Obtener la whishlist en su estado actual
+  - Agregar un producto a la whishlist
+  - Eliminar un producto de la whishlist
+
+## Endpoints
+
+Estos son los endpoints disponibles:
+
+## Autenticación
+```
+  POST /api/users/authenticate
 ```
 
-### Installation
+y en el body del request enviamos los siguientes datos:
 
-```sh
-$ git clone git@github.com:LateralView/backend-skel.git
-$ cd backend-skel
-$ npm install
-```
-
-### Configuration
-
-Before running the app, set the database host, base URL, Sendgrid API key and S3 keys in a `.env` file, so they are accesible by environment variables.
-You can use as an example the `.env.test` file, used for tests
-
-If S3 keys and/or bucket name are not set no errors will be thrown, but the files will not upload at all (for example in profile picture upload).
-Also, don't forget to run the mongoDB server.
-
-### Run the App
-
-```sh
-$ node server.js
-```
-
-### Apidoc
-
-The apidoc is created with grunt post-install script. It can be accessed through **http://localhost:8085/apidoc**
-
-### Tests
-
-Tests are written with [Mocha](http://mochajs.org/), [Chai](http://chaijs.com/), [Supertest](https://github.com/visionmedia/supertest/) and [Nock](https://github.com/pgte/nock).
-
-```sh
-$ npm test
-```
-
-We also use [Factory Girl](https://github.com/aexmachina/factory-girl) and [Faker.js](https://github.com/marak/Faker.js/) to create model instances. If you need to define new factories add them inside the register function present on **/test/factories.js** file.
-
-```javascript
-...
-var register = function() {
-    // User factory
-    factory.define('user', User, {
-        email: function() {
-            return faker.internet.email();
-        },
-        password: faker.internet.password(),
-        firstname: faker.name.firstName(),
-        lastname: faker.name.lastName()
-    });
+```json
+{
+  "email": "usuario@example.com",
+  "password": "mi-password"
 }
-...
 ```
 
-# Directory Structure
+Si las credenciales son correctas, el endpoint retornará la siguiente información del usuario:
 
-```
-backend-skel
-│   .gitignore
-│   package.json
-│   README.md
-│   server.js
-|   .env
-|   .env.test
-│
-└───app
-    │   ...
-    │
-└───node-modules
-    │   ...
-    │
-└───test
-    │   ...
-└───apidoc
-    │   ...
+```json
+{
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YjkzYzA4YWNmNTk4OWVjYTQ1OGM3MTQiLCJlbWFpbCI6InBlcGVAZXhhbXBsZS5jb20iLCJpYXQiOjE1MzY1MjQ4NzAsImV4cCI6MTUzNjYxMTI3MH0.wZnCqFP_qMYZR-4F8hpU6H15nZMWwjjMnh_iuJI4JhI",
+    "user": {
+        "_id": "5b93c08acf5989eca458c714",
+        "email": "usuario@example.com",
+        "firstname": "Pepe",
+        "lastname": "Argento"
+    }
+}
 ```
 
-* **App Folder** -> Backend logic.
-* **Test Folder** -> Unit Tests.
-* **Apidoc Folder** -> Auto-generated API documentation.
-* **.env** -> Backend configuration depending on the environment (ouside the repo, you must create the file).
-* **.env.test** -> Environment variables for tests.
-* **server.js** -> Express server.
-
-### App
-
-```
-app
-└───handlers
-    │   usersHandler.js
-    │   ...
-    │
-└───helpers
-    │   mailer.js
-    │   ...
-    │
-└───middleware
-    │   auth.js
-    │   ...
-    │
-└───models
-    │   user.js
-    │   ...
-└───routes
-    │   routes.js
+En caso de que las credenciales sean inválidas, devuelve un 401 con el siguiente detalle:
+```json
+{
+    "code": 1000100,
+    "message": "Invalid credentials.",
+    "detail": {},
+    "errors": []
+}
 ```
 
-* **Handlers Folder** -> Request handlers executed in each route in **routes.js**. New handlers must be registered in **server.js** file:
+## Productos
 
-```javascript
-...
-// Request Handlers
-var handlers = {
-    users: require('./app/handlers/usersHandler'),
-    // Add new one here
-};
-...
+### Obtener listado de productos
+```
+  GET /api/products
 ```
 
-* **Helpers Folder** -> Shared functions within the backend
-* **Middleware Folder** -> Express middleware. Add new middleware to the Express App in **server.js** or **routes.js**. The **auth.js** file cotains a middleware to authenticate routes with the authentication token. If authentication succeeds, it saves the current user in the request object
-* **Models Folder** -> Mongoose models
-* **Routes Folder** -> Express routes
+La cual devolverá un listado de los productos disponibles:
+```json
+[
+    {
+        "_id": "5b9596046b0838f64c0c5012",
+        "name": "Macbook Pro",
+        "price": 30000,
+        "oldPrice": 35000,
+        "pictureUrl": "https://s3.amazonaws.com/acamica-cart-images/product01.png"
+    },
+    {
+        "_id": "5b9596046b0838f64c0c5013",
+        "name": "Auriculares Sony",
+        "price": 2500,
+        "oldPrice": 2650,
+        "pictureUrl": "https://s3.amazonaws.com/acamica-cart-images/product02.png"
+    },
+    ...
+]
+```
 
+## Carrito
 
-Happy coding!
+### Obtener carrito
+```
+  GET /api/cart
+```
+
+El cual devuelve la siguiente información:
+
+```json
+[
+    {
+        "qty": 2,
+        "product": {
+            "pictureUrl": "https://s3.amazonaws.com/acamica-cart-images/product01.png",
+            "oldPrice": 35000,
+            "price": 30000,
+            "name": "Macbook Pro",
+            "__v": 0,
+            "_id": "5b9596046b0838f64c0c5012"
+        },
+        "_id": "5b959820c630e5f69601284e"
+    },
+    {
+        "qty": 1,
+        "product": {
+            "pictureUrl": "https://s3.amazonaws.com/acamica-cart-images/product02.png",
+            "oldPrice": 2650,
+            "price": 2500,
+            "name": "Auriculares Sony",
+            "__v": 0,
+            "_id": "5b9596046b0838f64c0c5013"
+        },
+        "_id": "5b95983fc630e5f696012851"
+    }
+]
+```
+
+### Agregar productos al carrito
+```
+  POST /api/cart
+```
+Con el body:
+
+```json
+{
+	"productId": "5b9596046b0838f64c0c5013",
+	"qty": 1
+}
+```
+
+Si se vuelve a agregar el mismo producto luego, se sumará la cantidad actual con la anterior y se actualizará el registro existente
+en lugar de crear uno nuevo.
+
+Si el producto no existe (el ID no matchea con ningún registro), se devuelve un 400 (bad request)
+
+### Eliminar un producto del carrito
+
+```json
+  DELETE /api/cart/:productId
+```
+
+Donde `:productId` es el ID del producto que se desea eliminar del carrito.
+Esto restará en 1 la cantidad de productos en el carrito.
+
+Si se quiere eliminar un producto del carrito aunque su cantidad sea mayor a 1, podemos agregar el parámetro opcional `all`
+```json
+  DELETE /api/cart/:productId?all=1
+```
+
+## Whishlist
+
+### Obntener whishlist
+```
+  GET /api/whishlist
+```
+
+El cual devuelve el siguiente listado:
+```json
+[
+    {
+        "__v": 0,
+        "name": "Tablet Xperia",
+        "price": 5400,
+        "oldPrice": 6000,
+        "pictureUrl": "https://s3.amazonaws.com/acamica-cart-images/product04.png",
+        "_id": "5b9596046b0838f64c0c5014"
+    }
+]
+```
+
+### Agregar un producto a la whishlist
+```
+  POST /api/whishlist
+```
+
+Pasándole el producto en el body
+
+```json
+{
+	"productId": "5b9596046b0838f64c0c5014"
+}
+```
+
+Si la operación fué exitosa, se devuelve el listado actualizado de productos en la whishlist.
+
+Si el producto ya existía, devuelve un 409 con el respectivo mensaje de error.
+
+Si el producto no existe (el ID no matchea con ningún registro), se devuelve un 400 (bad request)
+
+### Remover un producto de la whishlist
+```
+  DELETE /api/whishlist/:productId
+```
+
+Donde `:productId` es el ID del producto que se desea quitar de la whishlist.
+
+El endpoint devuelve la whishlist actualizada luego de la operación.
 

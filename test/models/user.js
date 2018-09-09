@@ -1,10 +1,8 @@
 const expect = require('chai').expect
-const User = require('../../app/models/user')
 const s3Manager = require("../../app/helpers/s3Manager")
 const sinon = require('sinon')
 const bcrypt = require("bcrypt-nodejs")
 const factory = require('factory-girl').factory
-const { ROLES } = require('../../app/models/const/roles')
 
 describe('User', () => {
 
@@ -29,21 +27,6 @@ describe('User', () => {
       expect(validUser.activation_token).to.not.equal(null);
       done();
     });
-
-    // it('is not active by default', (done) => {
-    //   expect(validUser.active).to.equal(false);
-    //   done();
-    // });
-
-    it('activates their account', async () => {
-      const user = await User.activateAccount(validUser.activation_token)
-      expect(user.active).to.equal(true);
-      expect(user.activation_token).to.not.equal(validUser.activation_token);
-    })
-
-    it('has default role', async () => {
-      expect(validUser.role).to.equals(ROLES.DATA_ENTRY)
-    })
   });
 
   describe('Invalid User', () => {
@@ -123,23 +106,6 @@ describe('User', () => {
       catch (error) {
         let password_error = error.errors.password;
         expect(password_error.message).to.equal("Password is too short.");
-      }
-    })
-
-    it('is invalid with a non-image file as picture', async () => {
-      try {
-        await factory.create('user', {
-          picture: {
-            original_file: {
-              mimetype: "application/zip"
-            }
-          }
-        })
-        throw new Error('this should fail')
-      }
-      catch (error) {
-        let image_error = error.errors['picture.original_file.mimetype'];
-        expect(image_error.message).to.equal("Invalid file.");
       }
     })
 

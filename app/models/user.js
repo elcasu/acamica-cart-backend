@@ -109,6 +109,9 @@ class User extends mongoose.Schema {
       // add to whishlist only if the product was not already added
       if (!existentProduct) {
         const product = await Product.findById(productId)
+        if (!product) {
+          throw new CustomError(400, 'The product provided was not found')
+        }
         this.whishlist.push(product)
         return this.save()
       }
@@ -158,10 +161,10 @@ class User extends mongoose.Schema {
       return this.save()
     }
 
-    this.methods.removeProductFromCart = function(productId) {
+    this.methods.removeProductFromCart = function(productId, all) {
       for (let i = 0; i < this.cart.length; i++) {
         if (this.cart[i].product._id.toString() === productId) {
-          if (this.cart[i].qty > 1) {
+          if (!all && this.cart[i].qty > 1) {
             this.cart[i].qty--
           } else {
             this.cart.splice(i, 1)
