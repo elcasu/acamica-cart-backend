@@ -23,26 +23,6 @@ class Product extends mongoose.Schema {
       pictureUrl: {
         type: String
       }
-
-      // picture: {
-      //   original_file: {
-      //     fieldname: String,
-      //     originalname: String,
-      //     name: String,
-      //     encoding: String,
-      //     mimetype: {
-      //       type: String,
-      //       default: ''
-      //     },
-      //     path: String,
-      //     extension: String,
-      //     size: Number,
-      //     truncated: Boolean,
-      //     buffer: Buffer
-      //   },
-      //   path: String,
-      //   url: String
-      // },
     })
 
     this.pre('save', function(next) {
