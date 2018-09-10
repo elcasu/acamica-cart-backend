@@ -19,6 +19,22 @@ La idea es exponer algunos endpoints que nos permitan:
 
 Estos son los endpoints disponibles:
 
+## Registración de un nuevo usuario
+```
+  POST /api/users
+```
+
+enviando en el body los siguientes datos:
+
+```json
+{
+  "email": "usuario@example.com",
+  "password": "mi-password",
+  "firstname": "Jorge",
+  "lastname": "Test"
+}
+```
+
 ## Autenticación
 ```
   POST /api/users/authenticate
