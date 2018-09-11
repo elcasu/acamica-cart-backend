@@ -75,8 +75,8 @@ En caso de que las credenciales sean inválidas, devuelve un 401 con el siguient
 
 ## Endpoints con autenticación
 
-Todos los endpoints requieren tener un usuario autenticado. Para que el backend sepa quién efectúa el request,
-debemos pasarle de alguna forma el access token generado al momento del login.
+Todos los endpoints, a excepción de la obtención de los productos, requieren tener un usuario autenticado.
+Para que el backend sepa quién efectúa el request, debemos pasarle de alguna forma el access token generado al momento del login.
 
 En los requests que necesitan un usuario autenticado, enviamos el access token en el header `x-access-token`
 

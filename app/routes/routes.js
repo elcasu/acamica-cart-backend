@@ -26,7 +26,7 @@ class Routes {
     this.appRoutes.delete('/cart/:productId', token_authentication(), handlers.users.removeProductFromCart)
 
     // ############## Users Routes ##############
-    this.appRoutes.get('/products', token_authentication(), handlers.products.getProducts)
+    this.appRoutes.get('/products', handlers.products.getProducts)
   }
 
   get() {
