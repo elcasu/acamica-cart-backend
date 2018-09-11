@@ -36,7 +36,7 @@ if (!mongoose.connection.readyState) {
 }
 
 // apidoc route
-app.use('/apidoc', express.static(path.join(__dirname, '/apidoc')));
+app.use('/apidoc', express.static(path.join(__dirname, '/public/apidoc')));
 
 // remove attachments when request finishes
 app.use(attachments.remove);
