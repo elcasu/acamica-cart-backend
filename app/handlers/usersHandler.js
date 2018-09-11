@@ -151,6 +151,8 @@ class UsersHandler {
    * @apiGroup Whishlist
    * @apiVersion 0.1.0
    *
+   * @apiHeader {String} x-access-token Users unique access token
+   *
    * @apiSuccessExample Success-Response
    *    HTTP/1.1 200 OK
    *    [
@@ -193,6 +195,8 @@ class UsersHandler {
    * @apiName addProductToWhishlist
    * @apiGroup Whishlist
    * @apiVersion 0.1.0
+   *
+   * @apiHeader {String} x-access-token Users unique access token
    *
    * @apiSuccessExample Success-Response
    *    HTTP/1.1 200 OK
@@ -257,6 +261,8 @@ class UsersHandler {
    * @apiGroup Whishlist
    * @apiVersion 0.1.0
    *
+   * @apiHeader {String} x-access-token Users unique access token
+   *
    * @apiParam {String} productId Product ID to be removed from whishlist
    *
    * @apiSuccessExample Success-Response
@@ -306,6 +312,8 @@ class UsersHandler {
    * @apiName getCart
    * @apiGroup Cart
    * @apiVersion 0.1.0
+   *
+   * @apiHeader {String} x-access-token Users unique access token
    *
    * @apiSuccessExample Success-Response
    *    HTTP/1.1 200 OK
@@ -357,6 +365,8 @@ class UsersHandler {
    * @apiName addProductToCart
    * @apiGroup Cart
    * @apiVersion 0.1.0
+   *
+   * @apiHeader {String} x-access-token Users unique access token
    *
    * @apiParam {String} productId Product Id to be added to the cart
    * @apiParam {Number} qty Quantity to be added
@@ -425,6 +435,8 @@ class UsersHandler {
    * @apiName removeProductFromCart
    * @apiGroup Cart
    * @apiVersion 0.1.0
+   *
+   * @apiHeader {String} x-access-token Users unique access token
    *
    * @apiParam {String} productId Product ID to remove from cart
    * @apiParam {String} all If specified, removes the cart item regardless the quantity.

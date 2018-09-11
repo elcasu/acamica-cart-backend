@@ -7,6 +7,8 @@ class ProductsHandler {
    * @apiGroup Products
    * @apiVersion 0.1.0
    *
+   * @apiHeader {String} x-access-token Users unique access token
+   *
    * @apiSuccessExample Success-Response
    *    HTTP/1.1 200 OK
    *    [
