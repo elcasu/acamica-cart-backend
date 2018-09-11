@@ -155,20 +155,20 @@ class UsersHandler {
    *    HTTP/1.1 200 OK
    *    [
    *      {
-   *          "__v": 0,
-   *          "name": "Notebook MSI",
-   *          "price": 8500,
-   *          "oldPrice": 9000,
-   *          "pictureUrl": "https://s3.amazonaws.com/mycart/product6.png",
-   *          "_id": "5b9596046b0838f64c0c5015"
+   *          __v: 0,
+   *          name: "Notebook MSI",
+   *          price: 8500,
+   *          oldPrice: 9000,
+   *          pictureUrl: "https://s3.amazonaws.com/mycart/product6.png",
+   *          _id: "5b9596046b0838f64c0c5015"
    *      },
    *      {
-   *          "__v": 0,
-   *          "name": "Smartphone Samsung",
-   *          "price": 7500,
-   *          "oldPrice": 8000,
-   *          "pictureUrl": "https://s3.amazonaws.com/mycart/product7.png",
-   *          "_id": "5b9596046b0838f64c0c5016"
+   *          __v: 0,
+   *          name: "Smartphone Samsung",
+   *          price: 7500,
+   *          oldPrice: 8000,
+   *          pictureUrl: "https://s3.amazonaws.com/mycart/product7.png",
+   *          _id: "5b9596046b0838f64c0c5016"
    *      }
    *    ]
    *
@@ -198,20 +198,20 @@ class UsersHandler {
    *    HTTP/1.1 200 OK
    *    [
    *      {
-   *          "__v": 0,
-   *          "name": "Notebook MSI",
-   *          "price": 8500,
-   *          "oldPrice": 9000,
-   *          "pictureUrl": "https://s3.amazonaws.com/mycart/product6.png",
-   *          "_id": "5b9596046b0838f64c0c5015"
+   *          __v: 0,
+   *          name: "Notebook MSI",
+   *          price: 8500,
+   *          oldPrice: 9000,
+   *          pictureUrl: "https://s3.amazonaws.com/mycart/product6.png",
+   *          _id: "5b9596046b0838f64c0c5015"
    *      },
    *      {
-   *          "__v": 0,
-   *          "name": "Smartphone Samsung",
-   *          "price": 7500,
-   *          "oldPrice": 8000,
-   *          "pictureUrl": "https://s3.amazonaws.com/mycart/product7.png",
-   *          "_id": "5b9596046b0838f64c0c5016"
+   *          __v: 0,
+   *          name: "Smartphone Samsung",
+   *          price: 7500,
+   *          oldPrice: 8000,
+   *          pictureUrl: "https://s3.amazonaws.com/mycart/product7.png",
+   *          _id: "5b9596046b0838f64c0c5016"
    *      }
    *    ]
    *
@@ -263,12 +263,12 @@ class UsersHandler {
    *    HTTP/1.1 200 OK
    *    [
    *      {
-   *          "__v": 0,
-   *          "name": "Notebook MSI",
-   *          "price": 8500,
-   *          "oldPrice": 9000,
-   *          "pictureUrl": "https://s3.amazonaws.com/mycart/product6.png",
-   *          "_id": "5b9596046b0838f64c0c5015"
+   *          __v: 0,
+   *          name: "Notebook MSI",
+   *          price: 8500,
+   *          oldPrice: 9000,
+   *          pictureUrl: "https://s3.amazonaws.com/mycart/product6.png",
+   *          _id: "5b9596046b0838f64c0c5015"
    *      }
    *    ]
    *
@@ -311,28 +311,28 @@ class UsersHandler {
    *    HTTP/1.1 200 OK
    *    [
    *       {
-   *           "qty": 3,
-   *           "product": {
-   *               "pictureUrl": "https://s3.amazonaws.com/mycart/product1.png",
-   *               "oldPrice": 35000,
-   *               "price": 30000,
-   *               "name": "Macbook Pro",
-   *               "__v": 0,
-   *               "_id": "5b9596046b0838f64c0c5012"
+   *           qty: 3,
+   *           product: {
+   *               pictureUrl: "https://s3.amazonaws.com/mycart/product1.png",
+   *               oldPrice: 35000,
+   *               price: 30000,
+   *               name: "Macbook Pro",
+   *               __v: 0,
+   *               _id: "5b9596046b0838f64c0c5012"
    *           },
-   *           "_id": "5b9808ed1e85e9371467034f"
+   *           _id: "5b9808ed1e85e9371467034f"
    *       },
    *       {
-   *           "qty": 1,
-   *           "product": {
-   *               "pictureUrl": "https://s3.amazonaws.com/mycart/product6.png",
-   *               "oldPrice": 9000,
-   *               "price": 8500,
-   *               "name": "Notebook MSI",
-   *               "__v": 0,
-   *               "_id": "5b9596046b0838f64c0c5015"
+   *           qty: 1,
+   *           product: {
+   *               pictureUrl: "https://s3.amazonaws.com/mycart/product6.png",
+   *               oldPrice: 9000,
+   *               price: 8500,
+   *               name: "Notebook MSI",
+   *               __v: 0,
+   *               _id: "5b9596046b0838f64c0c5015"
    *           },
-   *           "_id": "5b9808f81e85e93714670351"
+   *           _id: "5b9808f81e85e93714670351"
    *       }
    *     ]
    *
@@ -365,28 +365,28 @@ class UsersHandler {
    *    HTTP/1.1 200 OK
    *    [
    *       {
-   *           "qty": 3,
-   *           "product": {
-   *               "pictureUrl": "https://s3.amazonaws.com/mycart/product1.png",
-   *               "oldPrice": 35000,
-   *               "price": 30000,
-   *               "name": "Macbook Pro",
-   *               "__v": 0,
-   *               "_id": "5b9596046b0838f64c0c5012"
+   *           qty: 3,
+   *           product: {
+   *               pictureUrl: "https://s3.amazonaws.com/mycart/product1.png",
+   *               oldPrice: 35000,
+   *               price: 30000,
+   *               name: "Macbook Pro",
+   *               __v: 0,
+   *               _id: "5b9596046b0838f64c0c5012"
    *           },
-   *           "_id": "5b9808ed1e85e9371467034f"
+   *           _id: "5b9808ed1e85e9371467034f"
    *       },
    *       {
-   *           "qty": 2,
-   *           "product": {
-   *               "pictureUrl": "https://s3.amazonaws.com/mycart/product6.png",
-   *               "oldPrice": 9000,
-   *               "price": 8500,
-   *               "name": "Notebook MSI",
-   *               "__v": 0,
-   *               "_id": "5b9596046b0838f64c0c5015"
+   *           qty: 2,
+   *           product: {
+   *               pictureUrl: "https://s3.amazonaws.com/mycart/product6.png",
+   *               oldPrice: 9000,
+   *               price: 8500,
+   *               name: "Notebook MSI",
+   *               __v: 0,
+   *               _id: "5b9596046b0838f64c0c5015"
    *           },
-   *           "_id": "5b9808f81e85e93714670351"
+   *           _id: "5b9808f81e85e93714670351"
    *       }
    *     ]
    *
@@ -434,16 +434,16 @@ class UsersHandler {
    *    HTTP/1.1 200 OK
    *    [
    *       {
-   *           "qty": 2,
-   *           "product": {
-   *               "pictureUrl": "https://s3.amazonaws.com/mycart/product6.png",
-   *               "oldPrice": 9000,
-   *               "price": 8500,
-   *               "name": "Notebook MSI",
-   *               "__v": 0,
-   *               "_id": "5b9596046b0838f64c0c5015"
+   *           qty: 2,
+   *           product: {
+   *               pictureUrl: "https://s3.amazonaws.com/mycart/product6.png",
+   *               oldPrice: 9000,
+   *               price: 8500,
+   *               name: "Notebook MSI",
+   *               __v: 0,
+   *               _id: "5b9596046b0838f64c0c5015"
    *           },
-   *           "_id": "5b9808f81e85e93714670351"
+   *           _id: "5b9808f81e85e93714670351"
    *       }
    *     ]
    *
