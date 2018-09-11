@@ -3,5 +3,5 @@
   "version": "0.1.0",
   "description": "Implementación del backend para la segunda versión del e-commerce",
   "title": "Acamica ecommerce backend",
-  "sampleUrl": "http://localhost:8085"
+  "sampleUrl": "http://ecommerce.casu-net.com.ar"
 }
