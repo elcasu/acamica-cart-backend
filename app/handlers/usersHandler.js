@@ -198,6 +198,8 @@ class UsersHandler {
    *
    * @apiHeader {String} x-access-token Users unique access token
    *
+   * @apiParam {String} productId Product ID to add to the whishlist
+   *
    * @apiSuccessExample Success-Response
    *    HTTP/1.1 200 OK
    *    [
@@ -256,7 +258,7 @@ class UsersHandler {
   }
 
   /**
-   * @api {delete} /api/whishlist/:productId Add product to whishlist
+   * @api {delete} /api/whishlist/:productId Remove product to whishlist
    * @apiName removeProductToWhishlist
    * @apiGroup Whishlist
    * @apiVersion 0.1.0
