@@ -29,7 +29,7 @@ class ProductsHandler {
    * @apiError InvalidToken Invalid token
    *
    * @apiErrorExample Error-Response
-   *    HTTP/1.1 400 Bad Request
+   *    HTTP/1.1 403 Forbidden
    *    {
    *      code: 1000301,
    *      message: "Invalid token.",

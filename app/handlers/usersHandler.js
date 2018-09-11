@@ -175,7 +175,7 @@ class UsersHandler {
    * @apiError InvalidToken Invalid token
    *
    * @apiErrorExample Authentication error
-   *    HTTP/1.1 400 Bad Request
+   *    HTTP/1.1 403 Forbidden
    *    {
    *      code: 1000301,
    *      message: "Invalid token.",
@@ -232,7 +232,7 @@ class UsersHandler {
    * @apiError InvalidToken Invalid token
    *
    * @apiErrorExample Authentication error
-   *    HTTP/1.1 400 Bad Request
+   *    HTTP/1.1 403 Forbidden
    *    {
    *      code: 1000301,
    *      message: "Invalid token.",
@@ -282,7 +282,7 @@ class UsersHandler {
    * @apiError InvalidToken Invalid token
    *
    * @apiErrorExample Authentication error
-   *    HTTP/1.1 400 Bad Request
+   *    HTTP/1.1 403 Forbidden
    *    {
    *      code: 1000301,
    *      message: "Invalid token.",
@@ -339,7 +339,7 @@ class UsersHandler {
    * @apiError InvalidToken Invalid token
    *
    * @apiErrorExample Authentication error
-   *    HTTP/1.1 400 Bad Request
+   *    HTTP/1.1 403 Forbidden
    *    {
    *      code: 1000301,
    *      message: "Invalid token.",
@@ -401,7 +401,7 @@ class UsersHandler {
    * @apiError InvalidToken Invalid token
    *
    * @apiErrorExample Authentication error
-   *    HTTP/1.1 400 Bad Request
+   *    HTTP/1.1 403 Forbidden
    *    {
    *      code: 1000301,
    *      message: "Invalid token.",
@@ -450,7 +450,7 @@ class UsersHandler {
    * @apiError InvalidToken Invalid token
    *
    * @apiErrorExample Authentication error
-   *    HTTP/1.1 400 Bad Request
+   *    HTTP/1.1 403 Forbidden
    *    {
    *      code: 1000301,
    *      message: "Invalid token.",
