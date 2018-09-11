@@ -1,7 +1,7 @@
 {
-  "name": "Skel application",
+  "name": "Acamica ecommerce - Backend",
   "version": "0.1.0",
-  "description": "Skeleton app description",
-  "title": "Skeleton for MEAN application development",
+  "description": "Implementación del backend para la segunda versión del e-commerce",
+  "title": "Acamica ecommerce backend",
   "sampleUrl": "http://localhost:8085"
 }

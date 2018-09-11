@@ -3,7 +3,7 @@ class CustomError extends Error {
     super(message)
     this.code = code || 500
     this.message = {
-      errorMessage: message
+      message: message
     }
   }
 }
