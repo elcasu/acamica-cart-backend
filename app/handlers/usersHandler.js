@@ -235,6 +235,13 @@ class UsersHandler {
    *        message: "The product provided was not found"
    *    }
    *
+   * @apiError InvalidID The product id is invalid
+   * @apiErrorExample Error - Invalid ID
+   *    HTTP/1.1 400 Bad Request
+   *    {
+   *        message: "Invalid ID"
+   *    }
+   *
    * @apiError InvalidToken Invalid token
    *
    * @apiErrorExample Authentication error
@@ -253,7 +260,7 @@ class UsersHandler {
       res.send(updatedUser.whishlist);
     }
     catch (e) {
-      res.status(e.code).send(e.message)
+      res.status(e.code || 500).send(e.message)
     }
   }
 
@@ -305,7 +312,7 @@ class UsersHandler {
       res.send(updatedUser.whishlist)
     }
     catch(e) {
-      res.status(e.code).send(e.message)
+      res.status(e.code || 500).send(e.message)
     }
   }
 
@@ -408,7 +415,13 @@ class UsersHandler {
    *    {
    *        message: "Product not found"
    *    }
-   *    
+   *
+   * @apiError InvalidID The product id is invalid
+   * @apiErrorExample Error - Invalid ID
+   *    HTTP/1.1 400 Bad Request
+   *    {
+   *        message: "Invalid ID"
+   *    }
    *
    * @apiError InvalidToken Invalid token
    *

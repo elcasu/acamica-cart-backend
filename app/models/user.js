@@ -108,7 +108,14 @@ class User extends mongoose.Schema {
 
       // add to whishlist only if the product was not already added
       if (!existentProduct) {
-        const product = await Product.findById(productId)
+        let product
+        try {
+          product = await Product.findById(productId)
+        }
+        catch(e) {
+          throw new CustomError(400, 'Invalid ID')
+        }
+
         if (!product) {
           throw new CustomError(400, 'The product provided was not found')
         }
@@ -138,7 +145,13 @@ class User extends mongoose.Schema {
     }
 
     this.methods.addProductToCart = async function(productId, qty) {
-      const product = await Product.findById(productId)
+      let product
+      try {
+        product = await Product.findById(productId)
+      }
+      catch (e) {
+        throw new CustomError(400, 'Invalid ID')
+      }
       if (!product) {
         throw new CustomError(400, 'Product not found')
       }
