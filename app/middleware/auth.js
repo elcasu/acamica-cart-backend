@@ -13,6 +13,9 @@ module.exports = (...roles) => async (req, res, next) => {
         _id: decoded._id,
         email: decoded.email
       }, '+password')
+      if (!user) {
+        return res.status(401).send(errors.newError(errors.errorsEnum.AuthToken))
+      }
       req.current_user = user
 
       // check user role
