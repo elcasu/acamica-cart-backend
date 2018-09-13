@@ -145,6 +145,10 @@ class User extends mongoose.Schema {
     }
 
     this.methods.addProductToCart = async function(productId, qty) {
+      if (qty < 0) {
+        throw new CustomError(400, 'Quantity cannot be negative')
+      }
+      qty = parseInt(qty)
       let product
       try {
         product = await Product.findById(productId)

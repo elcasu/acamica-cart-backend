@@ -423,6 +423,13 @@ class UsersHandler {
    *        message: "Invalid ID"
    *    }
    *
+   * @apiError NegativeQuantityError The quantity cannot be negative
+   * @apiErrorExample Error - Invalid ID
+   *    HTTP/1.1 400 Bad Request
+   *    {
+   *        message: "Quantity cannot be negative"
+   *    }
+   *
    * @apiError InvalidToken Invalid token
    *
    * @apiErrorExample Authentication error
