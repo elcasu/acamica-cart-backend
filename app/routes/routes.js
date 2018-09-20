@@ -16,9 +16,9 @@ class Routes {
 
 
     // ### Whishlist
-    this.appRoutes.get('/whishlist', token_authentication(), handlers.users.getWhishlist)
-    this.appRoutes.post('/whishlist', token_authentication(), handlers.users.addProductToWhishlist)
-    this.appRoutes.delete('/whishlist/:productId', token_authentication(), handlers.users.removeProductFromWhishlist)
+    this.appRoutes.get('/wishlist', token_authentication(), handlers.users.getWhishlist)
+    this.appRoutes.post('/wishlist', token_authentication(), handlers.users.addProductToWhishlist)
+    this.appRoutes.delete('/wishlist/:productId', token_authentication(), handlers.users.removeProductFromWhishlist)
 
     // ### Cart
     this.appRoutes.get('/cart', token_authentication(), handlers.users.getCart)
