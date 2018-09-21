@@ -146,9 +146,9 @@ class UsersHandler {
   }
 
   /**
-   * @api {get} /api/whishlist Get user whishlist
-   * @apiName getWhishlist
-   * @apiGroup Whishlist
+   * @api {get} /api/wishlist Get user wishlist
+   * @apiName getWishlist
+   * @apiGroup Wishlist
    * @apiVersion 0.1.0
    *
    * @apiHeader {String} x-access-token Users unique access token
@@ -185,20 +185,20 @@ class UsersHandler {
    *      errors: ['activation_token']
    *    }
    */
-  async getWhishlist(req, res) {
+  async getWishlist(req, res) {
     const user = req.current_user
-    res.send(await user.getWhishlist())
+    res.send(await user.getWishlist())
   }
 
   /**
-   * @api {post} /api/whishlist Add product to whishlist
-   * @apiName addProductToWhishlist
-   * @apiGroup Whishlist
+   * @api {post} /api/wishlist Add product to wishlist
+   * @apiName addProductToWishlist
+   * @apiGroup Wishlist
    * @apiVersion 0.1.0
    *
    * @apiHeader {String} x-access-token Users unique access token
    *
-   * @apiParam {String} productId Product ID to add to the whishlist
+   * @apiParam {String} productId Product ID to add to the wishlist
    *
    * @apiSuccessExample Success-Response
    *    HTTP/1.1 200 OK
@@ -221,11 +221,11 @@ class UsersHandler {
    *      }
    *    ]
    *
-   * @apiError ProductAlreadyExists The product to be added, already exists in your whishlist
+   * @apiError ProductAlreadyExists The product to be added, already exists in your wishlist
    * @apiErrorExample Error - Product already exists
    *    HTTP/1.1 400 Bad Request
    *    {
-   *        message: "Product already exists in the whishlist"
+   *        message: "Product already exists in the wishlist"
    *    }
    *
    * @apiError ProductNotFound The product to be added, does not exist in the database
@@ -253,11 +253,11 @@ class UsersHandler {
    *      errors: ['activation_token']
    *    }
    */
-  async addProductToWhishlist(req, res) {
+  async addProductToWishlist(req, res) {
     const user = req.current_user;
     try {
-      const updatedUser = await user.addProductToWhishlist(req.body.productId);
-      res.send(updatedUser.whishlist);
+      const updatedUser = await user.addProductToWishlist(req.body.productId);
+      res.send(updatedUser.wishlist);
     }
     catch (e) {
       res.status(e.code || 500).send(e.message)
@@ -265,14 +265,14 @@ class UsersHandler {
   }
 
   /**
-   * @api {delete} /api/whishlist/:productId Remove product to whishlist
-   * @apiName removeProductToWhishlist
-   * @apiGroup Whishlist
+   * @api {delete} /api/wishlist/:productId Remove product to wishlist
+   * @apiName removeProductToWishlist
+   * @apiGroup Wishlist
    * @apiVersion 0.1.0
    *
    * @apiHeader {String} x-access-token Users unique access token
    *
-   * @apiParam {String} productId Product ID to be removed from whishlist
+   * @apiParam {String} productId Product ID to be removed from wishlist
    *
    * @apiSuccessExample Success-Response
    *    HTTP/1.1 200 OK
@@ -291,7 +291,7 @@ class UsersHandler {
    * @apiErrorExample Product not found error
    *    HTTP/1.1 400 Bad Request
    *    {
-   *        message: "Product does not exist in your whishlist"
+   *        message: "Product does not exist in your wishlist"
    *    }
    *
    * @apiError InvalidToken Invalid token
@@ -305,11 +305,11 @@ class UsersHandler {
    *      errors: ['activation_token']
    *    }
    */
-  async removeProductFromWhishlist(req, res) {
+  async removeProductFromWishlist(req, res) {
     const user = req.current_user
     try {
-      const updatedUser = await user.removeProductFromWhishlist(req.params.productId)
-      res.send(updatedUser.whishlist)
+      const updatedUser = await user.removeProductFromWishlist(req.params.productId)
+      res.send(updatedUser.wishlist)
     }
     catch(e) {
       res.status(e.code || 500).send(e.message)

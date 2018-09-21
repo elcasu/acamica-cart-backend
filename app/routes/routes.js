@@ -15,10 +15,10 @@ class Routes {
     this.appRoutes.post('/users', handlers.users.createUser);
 
 
-    // ### Whishlist
-    this.appRoutes.get('/wishlist', token_authentication(), handlers.users.getWhishlist)
-    this.appRoutes.post('/wishlist', token_authentication(), handlers.users.addProductToWhishlist)
-    this.appRoutes.delete('/wishlist/:productId', token_authentication(), handlers.users.removeProductFromWhishlist)
+    // ### Wishlist
+    this.appRoutes.get('/wishlist', token_authentication(), handlers.users.getWishlist)
+    this.appRoutes.post('/wishlist', token_authentication(), handlers.users.addProductToWishlist)
+    this.appRoutes.delete('/wishlist/:productId', token_authentication(), handlers.users.removeProductFromWishlist)
 
     // ### Cart
     this.appRoutes.get('/cart', token_authentication(), handlers.users.getCart)

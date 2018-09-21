@@ -37,7 +37,7 @@ class User extends mongoose.Schema {
         default: Date.now
       },
 
-      whishlist: {
+      wishlist: {
         type: [Product.schema]
       },
 
@@ -97,16 +97,16 @@ class User extends mongoose.Schema {
       }
     }
 
-    this.methods.getWhishlist = async function() {
-      return this.whishlist || []
+    this.methods.getWishlist = async function() {
+      return this.wishlist || []
     }
 
-    this.methods.addProductToWhishlist = async function(productId) {
-      const existentProduct = this.whishlist.find(item => {
+    this.methods.addProductToWishlist = async function(productId) {
+      const existentProduct = this.wishlist.find(item => {
         return item._id.toString() === productId
       })
 
-      // add to whishlist only if the product was not already added
+      // add to wishlist only if the product was not already added
       if (!existentProduct) {
         let product
         try {
@@ -119,23 +119,23 @@ class User extends mongoose.Schema {
         if (!product) {
           throw new CustomError(400, 'The product provided was not found')
         }
-        this.whishlist.push(product)
+        this.wishlist.push(product)
         return this.save()
       }
-      throw new CustomError(409, 'Product already exists in the whishlist')
+      throw new CustomError(409, 'Product already exists in the wishlist')
     }
 
-    this.methods.removeProductFromWhishlist = function(productId) {
+    this.methods.removeProductFromWishlist = function(productId) {
       let productFound = false
-      for (let i = 0; i < this.whishlist.length; i++) {
-        if (this.whishlist[i]._id.toString() === productId) {
+      for (let i = 0; i < this.wishlist.length; i++) {
+        if (this.wishlist[i]._id.toString() === productId) {
           productFound = true
-          this.whishlist.splice(i, 1)
+          this.wishlist.splice(i, 1)
           break
         }
       }
       if (!productFound) {
-        throw new CustomError(400, 'Product does not exist in your whishlist')
+        throw new CustomError(400, 'Product does not exist in your wishlist')
       }
       return this.save()
     }
